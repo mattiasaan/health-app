@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { TextInput, Button, Card } from 'react-native-paper';
 
 const EditScreen = ({ navigation, emergencyInfo = {}, saveInfo }) => {
@@ -8,6 +8,8 @@ const EditScreen = ({ navigation, emergencyInfo = {}, saveInfo }) => {
   const [phone, setPhone] = useState(emergencyInfo.phone || '');
   const [bloodGroup, setBloodGroup] = useState(emergencyInfo.bloodGroup || '');
   const [age, setAge] = useState(emergencyInfo.age || '');
+  const [info, setInfo] = useState(emergencyInfo.info || '');
+
 
   const handleSave = () => {
     const updatedInfo = {
@@ -16,13 +18,14 @@ const EditScreen = ({ navigation, emergencyInfo = {}, saveInfo }) => {
       phone,
       bloodGroup,
       age,
+      info,
     };
     saveInfo(updatedInfo);
     navigation.navigate('Home');
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Card style={styles.card}>
         <Card.Title title="Modifica Informazioni" />
         <Card.Content>
@@ -73,6 +76,16 @@ const EditScreen = ({ navigation, emergencyInfo = {}, saveInfo }) => {
             outlineColor="#7dc9c7"
             activeOutlineColor="#7dc9c7"
           />
+          <TextInput
+            label="Info"
+            mode="outlined"
+            value={info}
+            multiline={true}
+            onChangeText={setInfo}
+            style={styles.input}
+            outlineColor="#7dc9c7"
+            activeOutlineColor="#7dc9c7"
+          />
         </Card.Content>
       </Card>
 
@@ -83,7 +96,7 @@ const EditScreen = ({ navigation, emergencyInfo = {}, saveInfo }) => {
       >
         Salva Informazioni
       </Button>
-    </View>
+    </ScrollView>
   );
 };
 

@@ -14,7 +14,7 @@ const HomeScreen = ({ navigation, emergencyInfo }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Informazioni di Emergenza</Text>
+      <Text style={styles.title}>I tuoi cartellini</Text>
 
       <Card style={styles.card}>
         <Card.Title title="Dettagli Personali" left={() => <Icon name="account-circle" size={30} />} />
@@ -24,6 +24,7 @@ const HomeScreen = ({ navigation, emergencyInfo }) => {
           <Text><Text style={styles.label}>Telefono:</Text> {emergencyInfo.phone || "N/A"}</Text>
           <Text><Text style={styles.label}>Gruppo Sanguigno:</Text> {emergencyInfo.bloodGroup || "N/A"}</Text>
           <Text><Text style={styles.label}>Età:</Text> {emergencyInfo.age || "N/A"}</Text>
+          <Text><Text style={styles.label}>Informazioni:</Text> {emergencyInfo.info || "N/A"}</Text>
         </Card.Content>
       </Card>
 
